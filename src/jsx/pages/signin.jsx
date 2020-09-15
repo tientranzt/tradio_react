@@ -40,7 +40,7 @@ class Signin extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state);    
+    console.log(this.state);
     event.preventDefault();
   }
 
@@ -66,6 +66,7 @@ class Signin extends React.Component {
                 </div>
                 <div className="card-body">
                   <form method="post" name="myform" class="signin_validate">
+
                     <div className="form-group">
                       <label>Email</label>
                       <input
@@ -76,6 +77,7 @@ class Signin extends React.Component {
                         onChange={this.handleChangeUser}
                       />
                     </div>
+
                     <div className="form-group">
                       <label>Password</label>
                       <input
@@ -86,6 +88,7 @@ class Signin extends React.Component {
                         onChange={this.handleChangePass}
                       />
                     </div>
+
                     <div className="form-row d-flex justify-content-between mt-4 mb-2">
                       <div className="form-group mb-0">
                         <label className="toggle">
@@ -98,6 +101,7 @@ class Signin extends React.Component {
                         <Link to={"./reset"}>Forgot Password?</Link>
                       </div>
                     </div>
+
                     <div class="text-center">
                       <button
                         className="btn btn-success btn-block"
