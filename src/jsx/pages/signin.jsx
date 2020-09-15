@@ -40,9 +40,7 @@ class Signin extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state);
-    // this.login(this.state.user, this.state.pass);
-    
+    console.log(this.state);    
     event.preventDefault();
   }
 
