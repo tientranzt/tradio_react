@@ -13,9 +13,19 @@ class Signin extends React.Component {
     this.handleChangePass = this.handleChangePass.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // chạy sau constructor trước render
   componentDidMount() {}
 
+  // Chạy khi state thay đổi update lại UI
+  componentDidUpdate(){}
+
+  // Chạy khi component bị hủy
+  componentWillUnmount(){}
+
+  
   async login(email, pass) {
+    // dùng cho firebase store
     // const db = firebase.firestore();
     // var data = await db.collection("account").get();
     // console.log(data);
@@ -32,13 +42,17 @@ class Signin extends React.Component {
       });
   }
 
+  // set giá trị cho user state khi user nhập 
   handleChangeUser(event) {
     this.setState({ user: event.target.value });
   }
+
+   // set giá trị cho pass state khi user nhập 
   handleChangePass(event) {
     this.setState({ pass: event.target.value });
   }
-
+  
+  // xử lý khi user nhấp nút login
   handleSubmit(event) {
     console.log(this.state);
     event.preventDefault();
@@ -133,7 +147,6 @@ class Signin extends React.Component {
 }
 
 // function Signin() {
-
 //     return (
 //         <>
 //             <div class="authincation section-padding">
