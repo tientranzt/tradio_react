@@ -20,26 +20,6 @@ class Signin extends React.Component {
 
   componentWillUnmount(){}
 
-
-  async login(email, pass) {
-    
-    // const db = firebase.firestore();
-    // var data = await db.collection("account").get();
-    // console.log(data);
-
-    const auth = firebase.auth();
-    auth
-      .signInWithEmailAndPassword(email, pass)
-      .then((result) => {
-        this.setState({ isOk: true });
-      })
-      .catch((error) => {
-        this.setState({ isOk: false, errorMessage: error.message });
-        console.log(error.message);
-      });
-  }
-
-
   handleChangeUser(event) {
     this.setState({ user: event.target.value });
   }
@@ -48,6 +28,7 @@ class Signin extends React.Component {
   handleChangePass(event) {
     this.setState({ pass: event.target.value });
   }
+  
 
   handleSubmit(event) {
     console.log(this.state);
