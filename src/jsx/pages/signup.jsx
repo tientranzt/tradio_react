@@ -76,7 +76,7 @@ function Signup() {
                         className="form-control"
                         placeholder="Password"
                         name="password"
-                        onChange={(e) => setPass(`${e.target.value}this.pass`)}
+                        onChange={(e) => setPass(e.target.value)}
                       />
                     </div>
                     <div className="form-group">
@@ -86,7 +86,7 @@ function Signup() {
                         className="form-control"
                         placeholder="Password Confirm"
                         name="password-confirm"
-                        onChange={(e) => setPassConfirm(`${e.target.value}this.pass`)}
+                        onChange={(e) => setPassConfirm(e.target.value)}
                       />
                     </div>
                     <div className="text-center mt-4">
