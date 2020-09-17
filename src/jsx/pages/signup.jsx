@@ -4,29 +4,28 @@ import firebase from "../firebase";
 
 function Signup() {
   let history = useHistory();
-  let auth = firebase.auth()
-  
+  let auth = firebase.auth();
+
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [passConfirm, setPassConfirm] = useState("");
   const [errMessage, setErrMessage] = useState("");
 
   async function submitHandle() {
-
-    if(pass === passConfirm){
-      auth.createUserWithEmailAndPassword(email, pass).then((result) => {
-        console.log(result)
-        history.push("/signin");
-      })
-      .catch((err)=>{
-        console.log(err);
-        setErrMessage(err.message)
-      })
+    if (pass === passConfirm) {
+      auth
+        .createUserWithEmailAndPassword(email, pass)
+        .then((result) => {
+          console.log(result);
+          history.push("/signin");
+        })
+        .catch((err) => {
+          console.log(err);
+          setErrMessage(err.message);
+        });
+    } else {
+      setErrMessage("Password does not match");
     }
-    else{
-      setErrMessage("Password does not match")
-    }
-
   }
 
   return (
@@ -44,9 +43,7 @@ function Signup() {
                 <div className="card-header justify-content-center">
                   <h4 className="card-title">Sign up your account</h4>
                 </div>
-                <div className="px-3 text-danger">
-                  {errMessage}
-                </div>
+                <div className="px-3 text-danger">{errMessage}</div>
                 <div className="card-body">
                   <form method="post" name="myform" className="signup_validate">
                     {/* <div className="form-group">
