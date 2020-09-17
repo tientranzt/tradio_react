@@ -1,19 +1,36 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import firebase from "../firebase";
 
 function Signup() {
   let history = useHistory();
+  let auth = firebase.auth()
 
-  // const [user, setUser] = useState("");
+  
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [passConfirm, setPassConfirm] = useState("");
+  const [errMessage, setErrMessage] = useState("");
 
-  function submitHandle() {
-    // console.log(user);
-    console.log(email);
-    console.log(pass);
 
-    history.push("/signin");
+  async function submitHandle() {
+
+    if(pass === passConfirm){
+      auth.createUserWithEmailAndPassword(email, pass + "@!").then((result) => {
+        console.log(result)
+      })
+      .catch((err)=>{
+        console.log(err);
+        setErrMessage(err.message)
+      })
+    }
+    else{
+      setErrMessage("Password does not match")
+    }
+
+    
+
+    // history.push("/signin");
   }
 
   return (
@@ -30,6 +47,9 @@ function Signup() {
               <div className="auth-form card">
                 <div className="card-header justify-content-center">
                   <h4 className="card-title">Sign up your account</h4>
+                </div>
+                <div className="px-3 text-danger">
+                  {errMessage}
                 </div>
                 <div className="card-body">
                   <form method="post" name="myform" className="signup_validate">
@@ -60,11 +80,22 @@ function Signup() {
                         className="form-control"
                         placeholder="Password"
                         name="password"
-                        onChange={(e) => setPass(e.target.value)}
+                        onChange={(e) => setPass(e.target.value + "endfile")}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Password Confirm</label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Password Confirm"
+                        name="password-confirm"
+                        onChange={(e) => setPassConfirm(e.target.value)}
                       />
                     </div>
                     <div className="text-center mt-4">
                       <button
+                        type="button"
                         className="btn btn-success btn-block"
                         onClick={submitHandle}
                       >
