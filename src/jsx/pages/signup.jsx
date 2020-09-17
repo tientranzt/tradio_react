@@ -1,23 +1,19 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 function Signup() {
-
   let history = useHistory();
 
-
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  function submitHandle(){
-   
-    console.log(user);
+  function submitHandle() {
+    // console.log(user);
     console.log(email);
     console.log(pass);
-    
+
     history.push("/signin");
-    
   }
 
   return (
@@ -37,17 +33,16 @@ function Signup() {
                 </div>
                 <div className="card-body">
                   <form method="post" name="myform" className="signup_validate">
-                    <div className="form-group">
+                    {/* <div className="form-group">
                       <label>Username</label>
                       <input
                         type="text"
                         className="form-control"
                         placeholder="username"
                         name="username"
-                        onChange={(e)=> setUser(e.target.value)}
-
+                        onChange={(e) => setUser(e.target.value)}
                       />
-                    </div>
+                    </div> */}
                     <div className="form-group">
                       <label>Email</label>
                       <input
@@ -55,7 +50,7 @@ function Signup() {
                         className="form-control"
                         placeholder="hello@example.com"
                         name="email"
-                        onChange={(e)=> setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                     <div className="form-group">
@@ -65,11 +60,14 @@ function Signup() {
                         className="form-control"
                         placeholder="Password"
                         name="password"
-                        onChange={(e)=> setPass(e.target.value)}
+                        onChange={(e) => setPass(e.target.value)}
                       />
                     </div>
                     <div className="text-center mt-4">
-                      <button className="btn btn-success btn-block" onClick={submitHandle}>
+                      <button
+                        className="btn btn-success btn-block"
+                        onClick={submitHandle}
+                      >
                         Sign up
                       </button>
                       {/* <Link to={"./signin"} className="btn btn-success btn-block">
