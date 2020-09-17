@@ -5,19 +5,18 @@ import firebase from "../firebase";
 function Signup() {
   let history = useHistory();
   let auth = firebase.auth()
-
   
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [passConfirm, setPassConfirm] = useState("");
   const [errMessage, setErrMessage] = useState("");
 
-
   async function submitHandle() {
 
     if(pass === passConfirm){
-      auth.createUserWithEmailAndPassword(email, pass + "@!").then((result) => {
+      auth.createUserWithEmailAndPassword(email, pass).then((result) => {
         console.log(result)
+        history.push("/signin");
       })
       .catch((err)=>{
         console.log(err);
@@ -27,10 +26,7 @@ function Signup() {
     else{
       setErrMessage("Password does not match")
     }
-
     
-
-    // history.push("/signin");
   }
 
   return (
@@ -80,7 +76,7 @@ function Signup() {
                         className="form-control"
                         placeholder="Password"
                         name="password"
-                        onChange={(e) => setPass(e.target.value + "endfile")}
+                        onChange={(e) => setPass(`${e.target.value}this.file`)}
                       />
                     </div>
                     <div className="form-group">
@@ -90,7 +86,7 @@ function Signup() {
                         className="form-control"
                         placeholder="Password Confirm"
                         name="password-confirm"
-                        onChange={(e) => setPassConfirm(e.target.value)}
+                        onChange={(e) => setPassConfirm(`${e.target.value}this.file`)}
                       />
                     </div>
                     <div className="text-center mt-4">
